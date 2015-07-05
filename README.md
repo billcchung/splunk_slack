@@ -28,7 +28,10 @@ You'll want to set the slack.conf in default folder:
 ## Using it
 After installing and restarting splunk, yo can now use the `slackit` search command anywhere inside splunk, e.g.:
 ` index=_internal source=*metrics.log kbps=* | stats avg(eps) | slackit`
-then the report should be seen in slack: ![splunk_slack](https://s3.amazonaws.com/slackit/splunk_slackit.png)
+then the report should be seen in slack: 
+
+![splunk_slack](https://s3.amazonaws.com/slackit/splunk_slackit.png)
+
 
 # Notes
 1. The main purpose of this addon is to send report to slack. Raw events contain many fields, if you send them slack channel, it'll be hard to read.
