@@ -8,6 +8,7 @@ import os
 import sys
 import splunk.Intersplunk as sis
 (a, kwargs) = sis.getKeywordsAndOptions()
+TRUE_VALUES = ['true', '1', 't', 'y', 'yes']
 
 def get_pretty_table(results):
     if results:
@@ -32,7 +33,7 @@ def main():
     # update args if user speicify them in search
     channel = kwargs.get('channel', config.get('config', 'channel'))
     if not channel.startswith('#'): channel = '#' + channel
-    if config.get('config', 'allow_user_set_slack_url'):
+    if config.get('config', 'allow_user_set_slack_url').lower() in TRUE_VALUES:
         url = kwargs.get('url', config.get('config', 'url'))
     else:
         url = config.get('config', 'url')
